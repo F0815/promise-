@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style lang="">
+        img {
+            width: 450px;
+            height:256px;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        let arr = [
+            'http://www.hinews.cn/pic/0/16/76/02/16760258_838198.jpg',
+            'http://www.hinews.cn/pic/0/16/76/02/16760258_838198.jpg',
+            'http://www.hinews.cn/pic/0/16/76/02/16760258_838198.jpg'
+                   ];
+
+        function loadImg(url) {
+            return new Promise(function(resolve, reject) {
+                let Img = new Image();
+                Img.onload = () => {
+                    resolve(Img)
+                };
+                Img.src = url
+            })
+        }
+
+        // async function Load() {
+        //     let img = "";
+        //     try {
+        //         for (var i = 0; i < arr.length; i++) {
+        //             img = await loadImg(arr[i]);
+        //             document.body.appendChild(img);
+        //         }
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        // };
+        // Load();
+
+        var arr1=[];
+        let box=document.getElementById('box');
+        for(var i=0;i<arr.length;i++){
+            let img=new Image();
+            img.src=arr[i]
+            img.onload=()=>{
+                arr1.push(img);
+                if(arr.length===arr1.length){
+                    box.appendChild(arr1)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
